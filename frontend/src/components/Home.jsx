@@ -5,6 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
  // Assuming you have a CSS file for styling
  import '../styles/Food.css'
 
+ const DEV_URL = "http://localhost:5000"
+ const PROD_URL = ""
+ const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
+
 const Home = () => {
     const [foods, setFoods] = useState([]);
     const [user, setUser] = useState(null);
@@ -39,6 +43,7 @@ const Home = () => {
         // Add food item to cart (implementation needed)
         console.log('Add to cart:', foodId);
     };
+    
 
     return (
         <div className="home">

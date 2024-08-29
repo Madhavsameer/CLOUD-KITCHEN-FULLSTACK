@@ -6,6 +6,9 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Cart from './components/Cart';
 import Profile from './components/Profile';
+import AdminDashboard from './components/AdminDashboard';
+import ChefDashboard from './components/ChefDashboard';
+import About from './components/About';
 
 const App = () => {
     return (
@@ -14,9 +17,12 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                <Route path="/chef/dashboard" element={<ChefDashboard />} />
             </Routes>
         </Router>
     );

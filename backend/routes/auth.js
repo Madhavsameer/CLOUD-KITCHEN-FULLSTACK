@@ -43,7 +43,7 @@ router.post('/register', [
 // Login a user
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-
+    
     try {
         const user = await User.findOne({ email });
         if (!user || !(await user.comparePassword(password))) {
@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
         }
 
         const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
+        res.json({ token, role: user.role }); // Send the role back to the client
     } catch (error) {
         res.status(500).json({ error: 'Server error' });
     }

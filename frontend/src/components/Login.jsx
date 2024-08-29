@@ -15,8 +15,19 @@ const Login = () => {
 
         axios.post('http://localhost:5000/api/auth/login', { email, password })
             .then(response => {
-                localStorage.setItem('token', response.data.token);
-                navigate('/');
+                const token = response.data.token;
+                const userRole = response.data.role; // Assuming role is returned from the backend
+
+                localStorage.setItem('token', token);
+
+                // Redirect based on role
+                if (userRole === 'admin') {
+                    navigate('/admin/dashboard');
+                } else if (userRole === 'chef') {
+                    navigate('/chef/dashboard');
+                } else {
+                    navigate('/');
+                }
             })
             .catch(error => setError(error.response?.data?.error || 'Server error'));
     };
