@@ -4,6 +4,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css'; // Assuming you have a CSS file for styling
 
+
+const DEV_URL = "http://localhost:5000"
+ const PROD_URL = "https://cloud-kitchen-fullstack.onrender.com"
+ const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,7 +17,7 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:5000/api/auth/login', { email, password })
+        axios.post(`${BASE_URL}/api/auth/login`, { email, password })
             .then(response => {
                 const token = response.data.token;
                 const userRole = response.data.role; // Assuming role is returned from the backend

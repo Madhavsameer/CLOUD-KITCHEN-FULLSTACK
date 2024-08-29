@@ -4,6 +4,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Register.css'; // Assuming you have a CSS file for styling
 
+const DEV_URL = "http://localhost:5000"
+ const PROD_URL = "https://cloud-kitchen-fullstack.onrender.com"
+ const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
+
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -15,7 +19,7 @@ const Register = () => {
     const handleRegister = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:5000/api/auth/register', { name, email, password, role })
+        axios.post(`${BASE_URL}/api/auth/register`, { name, email, password, role })
             .then(response => {
                 navigate('/login'); // Redirect to login after successful registration
             })

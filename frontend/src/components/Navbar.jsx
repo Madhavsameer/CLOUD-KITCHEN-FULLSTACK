@@ -4,6 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Navbar.css';
 
+const DEV_URL = "http://localhost:5000"
+ const PROD_URL = "https://cloud-kitchen-fullstack.onrender.com"
+ const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
+
 const Navbar = () => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
@@ -11,7 +15,7 @@ const Navbar = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('http://localhost:5000/api/auth/profile', {
+            axios.get(`${BASE_URL}/api/auth/profile`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
  import '../styles/Food.css'
 
  const DEV_URL = "http://localhost:5000"
- const PROD_URL = ""
+ const PROD_URL = "https://cloud-kitchen-fullstack.onrender.com"
  const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
 
 const Home = () => {
@@ -16,14 +16,14 @@ const Home = () => {
 
     useEffect(() => {
         // Fetch food items from API
-        axios.get('http://localhost:5000/api/foods')
+        axios.get(`${BASE_URL}/api/foods`)
             .then(response => setFoods(response.data))
             .catch(error => console.error('Error fetching food items', error));
 
         // Check if user is logged in and fetch profile
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('http://localhost:5000/api/auth/profile', {
+            axios.get(`${BASE_URL}/api/auth/profile`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
