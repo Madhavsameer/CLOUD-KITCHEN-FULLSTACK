@@ -1,21 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Menu from './components/Menu';
-// import Cart from './components/Cart';
+import Home from './components/Home';
 import Login from './components/Login';
-import Register from './components/Register'; // Import Register component
-// import './styles/styles.css';
+import Register from './components/Register';
+import Cart from './components/Cart';
+import Profile from './components/Profile';
 
 const App = () => {
     return (
         <Router>
             <Navbar />
             <Routes>
-                <Route path="/Menu" element={<Menu />} />
-                {/* <Route path="/cart" element={<Cart />} /> */}
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} /> {/* Add Register route */}
+                <Route path="/register" element={<Register />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </Router>
     );

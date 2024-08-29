@@ -1,0 +1,49 @@
+.food-list {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line if necessary */
+     /* Adjust spacing between items */
+    gap: 16px; /* Adds space between items */
+}
+
+.food-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 300px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px; /* Ensures items grow and shrink with a minimum width */
+}
+
+.food-item h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.food-item p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.food-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.food-item button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.food-item button:hover {
+    background-color: #218838;
+}
