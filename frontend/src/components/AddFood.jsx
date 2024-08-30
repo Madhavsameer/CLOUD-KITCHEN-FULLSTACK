@@ -46,7 +46,7 @@ const AddFood = () => {
                     price: '',
                     category: ''
                 });
-                navigate('/dashboard'); // Redirect to dashboard or some other page
+                navigate('/admin/dashboard'); // Redirect to dashboard or some other page
             }
         } catch (error) {
             setError('Failed to add food item. Please try again.');

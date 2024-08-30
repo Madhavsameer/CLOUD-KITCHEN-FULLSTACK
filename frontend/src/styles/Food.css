@@ -2,20 +2,69 @@
     display: flex;
     flex-wrap: wrap; /* Allows items to wrap to the next line if necessary */
      /* Adjust spacing between items */
-    gap: 16px; /* Adds space between items */
+    gap: px; /* Adds space between items */
+    
 }
 
 .food-item {
     border: 1px solid #f5e3e3;
     border-radius: 8px;
     padding: 16px;
-    max-width: 250px;
+    max-width: 350px;
+    max-height: 400px;
     text-align: center;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     flex: 1 1 300px; /* Ensures items grow and shrink with a minimum width */
+    margin: 10px 30px;
 }
 
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    flex-direction: column-reverse;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #6d70b1;
+    border-radius: 4px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    border: 1px solid #ca8585;
+    border-radius: 4px;
+}
+
+.category-filters {
+    
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.category-filters button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #b92727;
+    border: 1px solid #43b379;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-left: 10px;
+    
+    
+}
+
+.category-filters button:hover {
+    background-color: #e4460d;
+}
 .food-item h2 {
     font-size: 1.5rem;
     margin-bottom: 1px;

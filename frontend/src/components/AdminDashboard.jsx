@@ -9,7 +9,7 @@ const AdminDashboard = () => {
             <p>Welcome to the admin dashboard!</p>
             {/* Add more admin-specific content here */}
 
-            <Link to="/addfood">Home</Link>
+            <Link to="/addfood">AddFood</Link>
         </div>
     );
 };
