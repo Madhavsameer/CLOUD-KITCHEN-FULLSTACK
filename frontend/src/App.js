@@ -8,8 +8,9 @@ import Cart from './components/Cart';
 import Profile from './components/Profile';
 import AdminDashboard from './components/AdminDashboard';
 import ChefDashboard from './components/ChefDashboard';
-import About from './components/About';
+
 import AddFood from './components/AddFood';
+import AboutUs from './components/AboutUs';
 
 const App = () => {
     return (
@@ -18,7 +19,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/about" element={<AboutUs />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/profile" element={<Profile />} />
