@@ -32,6 +32,8 @@ const Login = () => {
                 } else {
                     navigate('/');
                 }
+
+                window.location.reload();
             })
             .catch(error => setError(error.response?.data?.error || 'Server error'));
     };
