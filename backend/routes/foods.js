@@ -14,10 +14,10 @@ router.get('/', async (req, res) => {
 
 // Add a new food item
 router.post('/', async (req, res) => {
-    const { name, description, price, imageUrl } = req.body;
+    const { name, description, price, category, imageUrl } = req.body;
 
     try {
-        const food = new Food({ name, description, price, imageUrl });
+        const food = new Food({ name, description, price, category, imageUrl });
         await food.save();
         res.status(201).json(food);
     } catch (error) {

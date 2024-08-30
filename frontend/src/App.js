@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import AdminDashboard from './components/AdminDashboard';
 import ChefDashboard from './components/ChefDashboard';
 import About from './components/About';
+import AddFood from './components/AddFood';
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
                 <Route path="/chef/dashboard" element={<ChefDashboard />} />
+                <Route path="addfood" element={<AddFood />} />
             </Routes>
         </Router>
     );

@@ -59,6 +59,7 @@ const Home = () => {
                            <img src={food.imageUrl} alt={food.name} />
                             <h3>{food.name}</h3>
                             <p>{food.description}</p>
+                            <h4>₹{food.price}</h4>
                             <button onClick={() => handleAddToCart(food._id)}>
                                 Add to Cart
                             </button>
