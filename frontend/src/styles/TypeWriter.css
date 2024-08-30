@@ -1,0 +1,67 @@
+/* CSS for the Typewriter Effect */
+.typewriter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh; /* Full height of the viewport */
+    background-color: #ffffff; /* Light background for contrast */
+    margin-bottom: 10px;
+    text-align: left;
+    overflow:scroll;
+    position: relative;
+}
+
+.typewriter {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    text-align: left;
+    margin-top: 50px;
+    color: #6398cd;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid #34495e;
+    padding: 10px 0;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(90deg, #2980b9, #8e44ad);
+    -webkit-background-clip: text;
+    color: transparent;
+    min-height: 3rem; /* Ensures the height stays consistent */
+}
+
+/* Typing effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Animation for the blinking cursor */
+@keyframes blink-caret {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #34495e; }
+}
+
+/* Cursor reset after each iteration */
+.typewriter-active {
+    animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Text glow effect */
+.typewriter:hover {
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive font size for smaller screens */
+@media (max-width: 768px) {
+    .typewriter {
+        font-size: 2rem;
+        min-height: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .typewriter {
+        font-size: 1.5rem;
+        min-height: 1.5rem;
+    }
+}

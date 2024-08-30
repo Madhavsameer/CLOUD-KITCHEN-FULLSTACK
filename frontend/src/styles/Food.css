@@ -41,6 +41,7 @@ input[type="text"] {
     margin-bottom: 20px;
     border: 1px solid #ca8585;
     border-radius: 4px;
+    margin: 0px;
 }
 
 .category-filters {

@@ -48,7 +48,10 @@ button:hover {
 .signup-button:hover {
     background-color: #218838;
 }
-
+#greet{
+    color: hsl(93, 36%, 46%);
+    margin-left: 10px;
+}
 .error {
     color: red;
     text-align: center;

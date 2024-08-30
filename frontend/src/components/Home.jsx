@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Food.css';
+import TypeWriter from './TypeWriter';
 
 const DEV_URL = "http://localhost:5000";
 const PROD_URL = "https://cloud-kitchen-fullstack.onrender.com";
@@ -65,17 +66,37 @@ const Home = () => {
         console.log('Add to cart:', foodId);
     };
 
+    // Function to get time-based greeting
+    const getGreeting = () => {
+        const now = new Date();
+        const hour = now.getHours();
+
+        if (hour < 12) {
+            return 'Good Morning';
+        } else if (hour < 18) {
+            return 'Good Afternoon';
+        } else {
+            return 'Good Evening';
+        }
+    };
+
     return (
         <div className="home">
+            <TypeWriter/>
             <header>
-                <h1>Welcome to Our Cloud Kitchen</h1>
-                {user && <p>Hello, {user.name}!</p>}
+                
+                
+                    
+               
+                
+
+                {user && <h3 id='greet'>{`${getGreeting()}, ${user.name}!`}</h3>}
             </header>
             
             <section>
                 <input
                     type="text"
-                    placeholder="Search foods..."
+                    placeholder="What's on your mind...😋?"
                     value={searchTerm}
                     onChange={handleSearch}
                 />
