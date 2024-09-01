@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Food.css';
+import FoodList from './FoodList';
 import TypeWriter from './TypeWriter';
+import { CartContext } from '../contexts/CartContext'; // Import CartContext
 
 const DEV_URL = "http://localhost:5000";
 const PROD_URL = "https://cloud-kitchen-fullstack.onrender.com";
@@ -14,17 +16,16 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
+    const { addToCart } = useContext(CartContext); // Access addToCart from CartContext
 
     useEffect(() => {
-        // Fetch food items from API
         axios.get(`${BASE_URL}/api/foods`)
             .then(response => {
                 setFoods(response.data);
-                setFilteredFoods(response.data); // Initialize filtered foods with all foods
+                setFilteredFoods(response.data);
             })
             .catch(error => console.error('Error fetching food items', error));
 
-        // Check if user is logged in and fetch profile
         const token = localStorage.getItem('token');
         if (token) {
             axios.get(`${BASE_URL}/api/auth/profile`, {
@@ -62,11 +63,10 @@ const Home = () => {
             return;
         }
 
-        // Add food item to cart (implementation needed)
-        console.log('Add to cart:', foodId);
+        const selectedFood = foods.find(food => food._id === foodId);
+        addToCart(selectedFood); // Add the selected food item to the cart
     };
 
-    // Function to get time-based greeting
     const getGreeting = () => {
         const now = new Date();
         const hour = now.getHours();
@@ -82,17 +82,10 @@ const Home = () => {
 
     return (
         <div className="home">
-            <TypeWriter/>
+            <TypeWriter />
             <header>
-                
-                
-                    
-               
-                
-
                 {user && <h3 id='greet'>{`${getGreeting()}, ${user.name}!`}</h3>}
             </header>
-            
             <section>
                 <input
                     type="text"
@@ -110,19 +103,7 @@ const Home = () => {
                 </div>
 
                 <h2>Featured Foods</h2>
-                <div className="food-list">
-                    {filteredFoods.map(food => (
-                        <div key={food._id} className="food-item">
-                            <img src={food.imageUrl} alt={food.name} />
-                            <h3>{food.name}</h3>
-                            <p>{food.description}</p>
-                            <h4>₹{food.price}</h4>
-                            <button onClick={() => handleAddToCart(food._id)}>
-                                Add to Cart
-                            </button>
-                        </div>
-                    ))}
-                </div>
+                <FoodList foods={filteredFoods} handleAddToCart={handleAddToCart} />
             </section>
         </div>
     );
