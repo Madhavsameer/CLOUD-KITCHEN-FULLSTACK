@@ -1,7 +1,7 @@
 // src/components/Profile.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 const DEV_URL = "http://localhost:5000"
  const PROD_URL = "https://cloud-kitchen-fullstack.onrender.com"
@@ -35,15 +35,31 @@ const Profile = () => {
     }, [navigate]);
 
     if (loading) return <p>Loading...</p>;
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setUser(null);
+        navigate('/');
+    };
 
     return (
         <div>
             <h1>Profile</h1>
+            <div className="navbar-user">
+                {user ? (
+                    <>
+                        <span>Welcome, {user.name}</span>
+                        <button onClick={handleLogout}>Logout</button>
+                    </>
+                ) : (
+                    <Link to="/login">Login</Link>
+                )}
+            </div>
             {user ? (
                 <div>
                     <p>Name: {user.name}</p>
                     <p>Email: {user.email}</p>
                     <p>Role: {user.role}</p>
+                    <img src={user.profile} alt='profile'></img>
                 </div>
             ) : (
                 <p>No user information available</p>

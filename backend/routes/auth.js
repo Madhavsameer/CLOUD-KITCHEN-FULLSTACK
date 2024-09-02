@@ -62,7 +62,7 @@ router.get('/profile', authenticateToken, async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
         if (!user) return res.status(404).json({ error: 'User not found' });
-        res.json({ user: { name: user.name, email: user.email, role: user.role } });
+        res.json({ user: { name: user.name, email: user.email, role: user.role, profile:user.profile } });
     } catch (error) {
         res.status(500).json({ error: 'Server error' });
     }

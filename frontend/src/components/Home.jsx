@@ -11,6 +11,7 @@ const PROD_URL = "https://cloud-kitchen-fullstack.onrender.com";
 const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL;
 
 const Home = () => {
+
     const [foods, setFoods] = useState([]);
     const [filteredFoods, setFilteredFoods] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -64,7 +65,8 @@ const Home = () => {
         }
 
         const selectedFood = foods.find(food => food._id === foodId);
-        addToCart(selectedFood); // Add the selected food item to the cart
+        addToCart(selectedFood);
+         // Add the selected food item to the cart
     };
 
     const getGreeting = () => {
